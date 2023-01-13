@@ -40,10 +40,11 @@ public class PlayerMovement : MonoBehaviour {
 
     private void CameraLook() {
         yRot += lookDelta.x * mouseSens;
-        xRot -= -lookDelta.y * mouseSens;
+        xRot -= lookDelta.y * mouseSens;
 
         xRot = Mathf.Clamp(xRot, -90f, 90f);
 
-        playerCam.transform.rotation = Quaternion.Euler(xRot, yRot, 0);
+        playerCam.transform.GetChild(0).rotation = Quaternion.Euler(xRot, yRot, 0);
+        playerCam.transform.GetChild(1).rotation = Quaternion.Euler(xRot, yRot, 0);
     }
 }
