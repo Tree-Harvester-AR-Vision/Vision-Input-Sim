@@ -7,35 +7,36 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WebSocket : MonoBehaviour
-{
+public class WebSocket : MonoBehaviour {
 
-    ClientWebSocket socket;
-
-    CancellationTokenSource source = new CancellationTokenSource();
-    CancellationToken token;
+    static ClientWebSocket socket;
 
     Task Connected;
     bool specified;
 
-    void Start() {
+    private void Start() {
         
         socket = new ClientWebSocket();
-        token = source.Token;
         specified = false;
 
-        Connected = socket.ConnectAsync(new Uri("ws://localhost:8000"), token);
+        Connected = socket.ConnectAsync(new Uri("ws://localhost:8000"), CancellationToken.None);
     }
 
-    void Update() {
+    private async void Update() {
         if (Connected.IsCompleted && !specified) {
             Debug.Log("Connection Complete!");
             specified = true;
-            Send(socket, "T");
+            await Send(socket, "T");
         }
     }
 
-    static async Task Send(ClientWebSocket socket, string data) {
+    private static async Task Send(ClientWebSocket socket, string data) {
         await socket.SendAsync(Encoding.UTF8.GetBytes(data), WebSocketMessageType.Text, true, CancellationToken.None);
+    }
+
+    public static void UpdateTrees(List<InputTree> trees) {
+        foreach(InputTree tree in trees) {
+            Send(socket, tree.ToString());
+        }
     }
 }
