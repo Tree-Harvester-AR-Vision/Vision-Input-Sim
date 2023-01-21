@@ -9,7 +9,7 @@ public class TreeDetection : MonoBehaviour {
         Trees = new Dictionary<int, InputTree>();
     }
 
-    public static void Update() {
+    public void Update() {
         WebSocket.UpdateTrees(new List<InputTree>(Trees.Values));
     }
 
