@@ -25,6 +25,8 @@ public class BoundingBox : MonoBehaviour {
         BLCorner = transform.TransformPoint(GetComponent<MeshFilter>().sharedMesh.vertices[10]);
 
         MainCamera = Camera.main.transform;
+
+        gameObject.SetActive(false);
     }
 
     void Update() {
