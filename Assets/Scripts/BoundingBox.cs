@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 using UnityEngine;
 
- [JsonObject(MemberSerialization.OptIn)]
+ //[JsonObject(MemberSerialization.OptIn)]
 public class BoundingBox : MonoBehaviour {
     [JsonProperty] public float Width; // Width in terms of player
     [JsonProperty] public float Height; // Height in terms of player
@@ -14,6 +14,15 @@ public class BoundingBox : MonoBehaviour {
     private Vector3 TRCorner;
     private Vector3 centerGlobal;
     private Transform MainCamera;
+
+    public static bool isEqual(BoundingBox box, Vector3 center, float width, float height) {
+        if (
+            box.Width == width &&
+            box.Height == height &&
+            box.Center == center
+        ) return true;
+        else return false;
+    }
 
     void Start() {
         // calculate these values

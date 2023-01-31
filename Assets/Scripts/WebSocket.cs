@@ -35,7 +35,6 @@ public class WebSocket : MonoBehaviour {
     }
 
     public static async void UpdateTrees(List<InputTree> trees) {
-        Debug.Log(trees.Count);
         int i = 0;
         foreach(InputTree tree in trees) {
             if (tree.boundingBox.Center != Vector3.zero) {
@@ -43,6 +42,5 @@ public class WebSocket : MonoBehaviour {
             }
             Send(socket, tree.JsonSerialize());
         }
-        Debug.Log("Trees seen: " + i);
     }
 }
