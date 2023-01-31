@@ -34,13 +34,22 @@ public class WebSocket : MonoBehaviour {
         await socket.SendAsync(Encoding.UTF8.GetBytes(data), WebSocketMessageType.Text, true, CancellationToken.None);
     }
 
-    public static async void UpdateTrees(List<InputTree> trees) {
+    public static async void UpdateTrees(List<InputTree> trees, List<InputTree> removeTrees) {
         int i = 0;
         foreach(InputTree tree in trees) {
             if (tree.boundingBox.Center != Vector3.zero) {
                 i++;
             }
-            Send(socket, tree.JsonSerialize());
+            await Send(socket, "Update");
+            await Send(socket, tree.JsonSerialize());
+        }
+
+        foreach(InputTree tree in removeTrees) {
+            if (tree.boundingBox.Center != Vector3.zero) {
+                i++;
+            }
+            await Send(socket, "Remove");
+            await Send(socket, tree.JsonSerialize());
         }
     }
 }

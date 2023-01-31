@@ -5,16 +5,19 @@ using UnityEngine;
 public class TreeDetection : MonoBehaviour {
     public static Dictionary<int, InputTree> Trees;
     private Dictionary<int, List<dynamic>> previousTrees;
+    private List<InputTree> removeTrees;
 
     private void Start() {
         Trees = new Dictionary<int, InputTree>();
         previousTrees = new Dictionary<int, List<dynamic>>();
+        removeTrees = new List<InputTree>();
     }
 
     public void Update() {
         Dictionary<int, InputTree> temp = new Dictionary<int, InputTree>();
         foreach (KeyValuePair<int, InputTree> tree in Trees) {
             if (tree.Value.boundingBox.Center == Vector3.zero && tree.Value.boundingBox.Width == 0 && tree.Value.boundingBox.Height == 0) {
+                removeTrees.Add(tree.Value);
                 continue; // if the tree is not being rendered
             }
 
@@ -40,7 +43,7 @@ public class TreeDetection : MonoBehaviour {
             });
         }
 
-        WebSocket.UpdateTrees(new List<InputTree>(temp.Values));
+        WebSocket.UpdateTrees(new List<InputTree>(temp.Values), removeTrees);
     }
 
     public static void AddTree(int key, InputTree tree) {
