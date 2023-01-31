@@ -1,21 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
+ [JsonObject(MemberSerialization.OptIn)]
 public class BoundingBox : MonoBehaviour {
-    public float Width; // Width in terms of player
-    public float Height; // Height in terms of player
-    public Vector3 Center; // Center in terms of player
+    [JsonProperty] public float Width; // Width in terms of player
+    [JsonProperty] public float Height; // Height in terms of player
+    [JsonProperty] public Vector3 Center; // Center in terms of player
 
     private Vector3 TLCorner;
     private Vector3 BLCorner;
     private Vector3 TRCorner;
     private Vector3 centerGlobal;
     private Transform MainCamera;
-
-    public override string ToString() {
-        return $"{{Width: {Width}; Height: {Height}; Center: {Center.ToString()};}}";
-    }
 
     void Start() {
         // calculate these values

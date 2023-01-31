@@ -34,9 +34,15 @@ public class WebSocket : MonoBehaviour {
         await socket.SendAsync(Encoding.UTF8.GetBytes(data), WebSocketMessageType.Text, true, CancellationToken.None);
     }
 
-    public static void UpdateTrees(List<InputTree> trees) {
+    public static async void UpdateTrees(List<InputTree> trees) {
+        Debug.Log(trees.Count);
+        int i = 0;
         foreach(InputTree tree in trees) {
-            Send(socket, tree.ToString());
+            if (tree.boundingBox.Center != Vector3.zero) {
+                i++;
+            }
+            Send(socket, tree.JsonSerialize());
         }
+        Debug.Log("Trees seen: " + i);
     }
 }

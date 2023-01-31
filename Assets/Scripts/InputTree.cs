@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
-public class InputTree : MonoBehaviour
-{
-
-    public BoundingBox boundingBox;
-    public int Age;
-    public string Species;
-    private int Key;
+[JsonObject(MemberSerialization.OptIn)]
+public class InputTree : MonoBehaviour {
+    [JsonProperty] public BoundingBox boundingBox;
+    [JsonProperty] public int Age;
+    [JsonProperty] public string Species;
+    [JsonProperty] private int Key;
 
     private string[] possibleSpecies = {
         "Red Maple",
@@ -20,8 +20,10 @@ public class InputTree : MonoBehaviour
         "Sakura"
     };
 
-    public override string ToString() {
-        return $"{{Species: {Species}; Age: {Age}; BoundingBox: {boundingBox.ToString()}}}";
+    public string JsonSerialize() {
+        return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings {
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+        });
     }
 
     void Start() {
