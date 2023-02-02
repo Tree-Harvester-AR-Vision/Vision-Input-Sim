@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-//using Newtonsoft.Json;
+using Newtonsoft.Json;
 using UnityEngine;
 
-//[JsonObject(MemberSerialization.OptIn)]
+[JsonObject(MemberSerialization.OptIn)]
 public class InputTree : MonoBehaviour {
     [JsonProperty] public BoundingBox boundingBox;
     [JsonProperty] public int Age;
@@ -20,11 +20,11 @@ public class InputTree : MonoBehaviour {
         "Sakura"
     };
 
-    public static bool isEqual(InputTree tree, List<dynamic> other) {
+    public static bool isEqual(InputTree tree, List<object> other) {
         if (
-            tree.Age == other[0] &&
-            tree.Species == other[1] &&
-            BoundingBox.isEqual(tree.boundingBox, other[2], other[3], other[4])
+            tree.Age == (int)other[0] &&
+            tree.Species == (string)other[1] &&
+            BoundingBox.isEqual(tree.boundingBox, (Vector3)other[2], (float)other[3], (float)other[4])
         ) return true;
         else return false;
     }

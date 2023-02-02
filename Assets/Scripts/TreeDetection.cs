@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class TreeDetection : MonoBehaviour {
     public static Dictionary<int, InputTree> Trees;
-    private Dictionary<int, List<dynamic>> previousTrees;
-    private List<InputTree> removeTrees;
+    private Dictionary<int, List<object>> previousTrees;
+    private static Dictionary<int, InputTree> treesToRemove;
 
     private void Start() {
         Trees = new Dictionary<int, InputTree>();
-        previousTrees = new Dictionary<int, List<dynamic>>();
-        removeTrees = new List<InputTree>();
+        previousTrees = new Dictionary<int, List<object>>();
+        treesToRemove = new Dictionary<int, InputTree>();
     }
 
-    public void Update() {
+    public async void FixedUpdate() {
         Dictionary<int, InputTree> temp = new Dictionary<int, InputTree>();
+        Dictionary<int, List<object>> newPrevTrees = new Dictionary<int, List<object>>();
+        List<InputTree> removeTrees = new List<InputTree>();
+
         foreach (KeyValuePair<int, InputTree> tree in Trees) {
-            if (tree.Value.boundingBox.Center == Vector3.zero && tree.Value.boundingBox.Width == 0 && tree.Value.boundingBox.Height == 0) {
-                removeTrees.Add(tree.Value);
+            if (tree.Value.boundingBox.Center == Vector3.zero || tree.Value.boundingBox.Width == 0 || tree.Value.boundingBox.Height == 0) {
+                if (previousTrees.ContainsKey(tree.Key))
+                    removeTrees.Add(tree.Value);
+
                 continue; // if the tree is not being rendered
             }
 
@@ -27,14 +32,14 @@ public class TreeDetection : MonoBehaviour {
                 }
             }
 
-            // else prepare it to be sent
-            temp.Add(tree.Key, tree.Value);
-        }
+            // if trees don't match what it was last time, prepare to send
+            if (previousTrees.ContainsKey(tree.Key)) {
+                if (tree.Value.boundingBox.Center != (Vector3)previousTrees[tree.Key][2]) {
+                    temp.Add(tree.Key, tree.Value);
+                }
+            } else { temp.Add(tree.Key, tree.Value); }
 
-        previousTrees.Clear();
-
-        foreach(KeyValuePair<int, InputTree> tree in temp) {
-            previousTrees.Add(tree.Key, new List<dynamic> {
+            newPrevTrees.Add(tree.Key, new List<object> {
                 tree.Value.Age,
                 tree.Value.Species,
                 tree.Value.boundingBox.Center,
@@ -43,7 +48,16 @@ public class TreeDetection : MonoBehaviour {
             });
         }
 
-        WebSocket.UpdateTrees(new List<InputTree>(temp.Values), removeTrees);
+        foreach(KeyValuePair<int, InputTree> tree in treesToRemove) {
+            if (previousTrees.ContainsKey(tree.Key) && !removeTrees.Contains(tree.Value)) {
+                removeTrees.Add(tree.Value);
+            }
+        }
+
+        treesToRemove.Clear();
+        previousTrees = newPrevTrees;
+
+        await WebSocket.UpdateTrees(new List<InputTree>(temp.Values), new List<InputTree>(removeTrees));
     }
 
     public static void AddTree(int key, InputTree tree) {
@@ -55,8 +69,8 @@ public class TreeDetection : MonoBehaviour {
     }
 
     public static void RemoveTree(int key, InputTree tree) {
-        if (Trees.ContainsKey(key)) {
-            Trees.Remove(key);
+        if (Trees.ContainsKey(key) && !treesToRemove.ContainsKey(key)) {
+            treesToRemove.Add(key, tree);
         }
     }
 }

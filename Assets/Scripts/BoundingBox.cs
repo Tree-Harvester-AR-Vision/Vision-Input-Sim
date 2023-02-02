@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-//using Newtonsoft.Json;
+using Newtonsoft.Json;
 using UnityEngine;
 
- //[JsonObject(MemberSerialization.OptIn)]
+[JsonObject(MemberSerialization.OptIn)]
 public class BoundingBox : MonoBehaviour {
     [JsonProperty] public float Width; // Width in terms of player
     [JsonProperty] public float Height; // Height in terms of player
