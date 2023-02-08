@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class TreeDetection : MonoBehaviour {
     public static Dictionary<int, InputTree> Trees;
+    private List<InputTree> createTrees;
     private Dictionary<int, List<object>> previousTrees;
     private static Dictionary<int, InputTree> treesToRemove;
+    private int it = 0;
 
     private void Start() {
         Trees = new Dictionary<int, InputTree>();
@@ -17,6 +19,7 @@ public class TreeDetection : MonoBehaviour {
         Dictionary<int, InputTree> temp = new Dictionary<int, InputTree>();
         Dictionary<int, List<object>> newPrevTrees = new Dictionary<int, List<object>>();
         List<InputTree> removeTrees = new List<InputTree>();
+        createTrees = new List<InputTree>();
 
         foreach (KeyValuePair<int, InputTree> tree in Trees) {
             if (tree.Value.boundingBox.Center == Vector3.zero || tree.Value.boundingBox.Width == 0 || tree.Value.boundingBox.Height == 0) {
@@ -37,7 +40,7 @@ public class TreeDetection : MonoBehaviour {
                 if (tree.Value.boundingBox.Center != (Vector3)previousTrees[tree.Key][2]) {
                     temp.Add(tree.Key, tree.Value);
                 }
-            } else { temp.Add(tree.Key, tree.Value); }
+            } else { createTrees.Add(tree.Value); } // if new tree
 
             newPrevTrees.Add(tree.Key, new List<object> {
                 tree.Value.Age,
@@ -57,7 +60,10 @@ public class TreeDetection : MonoBehaviour {
         treesToRemove.Clear();
         previousTrees = newPrevTrees;
 
-        await WebSocket.UpdateTrees(new List<InputTree>(temp.Values), new List<InputTree>(removeTrees));
+        await WebSocket.UpdateTrees(
+            new List<InputTree>(createTrees),
+            new List<InputTree>(temp.Values), 
+            new List<InputTree>(removeTrees));
     }
 
     public static void AddTree(int key, InputTree tree) {
