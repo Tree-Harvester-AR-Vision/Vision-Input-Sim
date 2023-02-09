@@ -17,11 +17,16 @@ public class TreeDetection : MonoBehaviour {
 
     public async void FixedUpdate() {
 
-        if (it < 30) {
-            it++;
-            return;
-        } else { it = 0; }
+        List<InputTree>[] newData = CreateData();
 
+        await WebSocket.UpdateTrees(
+            new List<InputTree>(newData[0]),
+            new List<InputTree>(newData[1]),
+            new List<InputTree>(newData[2])
+        );
+    }
+
+    private List<InputTree>[] CreateData() {
         Dictionary<int, InputTree> temp = new Dictionary<int, InputTree>();
         Dictionary<int, List<object>> newPrevTrees = new Dictionary<int, List<object>>();
         List<InputTree> removeTrees = new List<InputTree>();
@@ -57,7 +62,7 @@ public class TreeDetection : MonoBehaviour {
             });
         }
 
-        foreach(KeyValuePair<int, InputTree> tree in treesToRemove) {
+        foreach (KeyValuePair<int, InputTree> tree in treesToRemove) {
             if (previousTrees.ContainsKey(tree.Key) && !removeTrees.Contains(tree.Value)) {
                 removeTrees.Add(tree.Value);
             }
@@ -66,10 +71,7 @@ public class TreeDetection : MonoBehaviour {
         treesToRemove.Clear();
         previousTrees = newPrevTrees;
 
-        await WebSocket.UpdateTrees(
-            new List<InputTree>(createTrees),
-            new List<InputTree>(temp.Values), 
-            new List<InputTree>(removeTrees));
+        return new List<InputTree>[3]{ createTrees, new List<InputTree>(temp.Values), removeTrees };
     }
 
     public static void AddTree(int key, InputTree tree) {
