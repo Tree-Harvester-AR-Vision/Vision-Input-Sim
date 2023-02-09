@@ -44,11 +44,11 @@ public class WebSocket : MonoBehaviour {
         }
 
         foreach(InputTree tree in updateTrees) {
-            Debug.Log(tree.JsonSerialize());
             await Send(socket, "Update" + tree.JsonSerialize());
         }
 
         foreach(InputTree tree in removeTrees) {
+            Debug.Log("removing");
             await Send(socket, "Remove" + tree.JsonSerialize());
         }
     }

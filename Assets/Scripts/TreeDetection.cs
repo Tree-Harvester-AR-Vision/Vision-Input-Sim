@@ -16,6 +16,12 @@ public class TreeDetection : MonoBehaviour {
     }
 
     public async void FixedUpdate() {
+
+        if (it < 30) {
+            it++;
+            return;
+        } else { it = 0; }
+
         Dictionary<int, InputTree> temp = new Dictionary<int, InputTree>();
         Dictionary<int, List<object>> newPrevTrees = new Dictionary<int, List<object>>();
         List<InputTree> removeTrees = new List<InputTree>();
