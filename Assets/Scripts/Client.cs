@@ -59,7 +59,6 @@ public class Client : MonoBehaviour {
         foreach(InputTree tree in TreeDetection.Trees.Values) {
             BoundingBox bBox = tree.boundingBox;
             if (bBox.Width != 0 && bBox.Height != 0) {
-                Debug.Log(tree.JsonSerialize());
                 TransportHelper.SendString(m_Driver, m_FragPL, m_Connection, tree.JsonSerialize());
             }
         }

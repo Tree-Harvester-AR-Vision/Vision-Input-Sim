@@ -12,8 +12,6 @@ public static class TransportHelper {
         writer.WriteFixedString4096(formmatedStr);
 
         driver.EndSend(writer);
-
-        Debug.Log("Sent");
     }
 
     public static string ReceiveString(DataStreamReader stream) {
