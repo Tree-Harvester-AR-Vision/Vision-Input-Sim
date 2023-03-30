@@ -19,7 +19,7 @@ public class TreeDetection : MonoBehaviour {
 
         List<InputTree>[] newData = CreateData();
 
-        await WebSocket.UpdateTrees(
+        await TCPSocket.UpdateTrees(
             new List<InputTree>(newData[0]),
             new List<InputTree>(newData[1]),
             new List<InputTree>(newData[2])

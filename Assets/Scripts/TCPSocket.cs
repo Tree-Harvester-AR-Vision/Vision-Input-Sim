@@ -9,7 +9,7 @@ using UnityEngine;
 using Unity.VisualScripting;
 using Newtonsoft.Json;
 
-public class WebSocket : MonoBehaviour
+public class TCPSocket : MonoBehaviour
 {
 
     private static JsonSerializerSettings settings = new JsonSerializerSettings()
