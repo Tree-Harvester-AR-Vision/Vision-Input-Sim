@@ -1,13 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="af6d981b-9f28-4676-8687-69277dba9104" name="Changes" comment="" />
+    <list default="true" id="af6d981b-9f28-4676-8687-69277dba9104" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vision-Input-Sim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vision-Input-Sim/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Clients/Cllient.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Clients/Cllient.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Clients/IWebClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Clients/IWebClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Clients/TCPClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Clients/TCPClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Clients/UDPClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Clients/UdpClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Clients/UDPClient.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TCPSocket.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TCPSocket.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TransportHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TransportHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TreeDetection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TreeDetection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UDPClient.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UDPClient.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="RunManager">
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/75633565436c42f0a6426b33f0132ade46a800/81/ea11d7ca/NullReferenceException.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/75633565436c42f0a6426b33f0132ade46a800/aa/0ed435da/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bd683afc128a44a9abd6733a61102a163a00/6c/3e542b60/NativeInputSystem.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="SWEA" />
+  </component>
+  <component name="ProjectId" id="2NknYVu1krMtm7h7FXqwBnpQ0op" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "XThreadsFramesViewSplitterKey": "0.31715772",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\rundels\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\rundels\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\rundels\\AppData\\Local\\Symbols\\src"
+    ]
+  }
+}]]></component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.16f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Sam\EDA\TreeHarvesterARVision\Vision-Input-Sim -debugCodeOptimization" />
@@ -24,10 +73,104 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="27872">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" value="27872" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="af6d981b-9f28-4676-8687-69277dba9104" name="Changes" comment="" />
+      <created>1680216996640</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680216996640</updated>
+      <workItem from="1680217001823" duration="3277000" />
+      <workItem from="1680221431414" duration="724000" />
+    </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
-  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Clients/TCPClient.cs</url>
+          <line>61</line>
+          <properties documentPath="C:\Sam\EDA\TreeHarvesterARVision\Vision-Input-Sim\Assets\Scripts\Clients\TCPClient.cs" initialLine="62" containingFunctionPresentation="method 'UpdateTrees'">
+            <startOffsets>
+              <option value="1782" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1809" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Clients/UdpClient.cs</url>
+          <line>85</line>
+          <properties documentPath="C:\Sam\EDA\TreeHarvesterARVision\Vision-Input-Sim\Assets\Scripts\Clients\UdpClient.cs" initialLine="85" containingFunctionPresentation="method 'StartupSequence'">
+            <startOffsets>
+              <option value="2386" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2408" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/TransportHelper.cs</url>
+          <line>10</line>
+          <properties documentPath="C:\Sam\EDA\TreeHarvesterARVision\Vision-Input-Sim\Assets\Scripts\TransportHelper.cs" initialLine="7" containingFunctionPresentation="method 'SendString'">
+            <startOffsets>
+              <option value="323" />
+            </startOffsets>
+            <endOffsets>
+              <option value="374" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/TransportHelper.cs</url>
+          <line>13</line>
+          <properties documentPath="C:\Sam\EDA\TreeHarvesterARVision\Vision-Input-Sim\Assets\Scripts\TransportHelper.cs" initialLine="10" containingFunctionPresentation="method 'SendString'">
+            <startOffsets>
+              <option value="426" />
+            </startOffsets>
+            <endOffsets>
+              <option value="447" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
 </project>

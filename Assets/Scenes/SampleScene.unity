@@ -5495,11 +5495,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 601054602}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4ec6acae84f09240a4d10447ddca42e, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c15164a6ec3e2642a371cebe9549517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IP: localhost
+  IP: 127.0.0.1
   Port: 7000
+  Type: 2
 --- !u!1001 &604821136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6901,7 +6902,6 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
-  - component: {fileID: 705507997}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -6986,18 +6986,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &705507997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705507993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bc38db60a2f934438b7b03037696b21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &708719006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 444140017717568444, guid: 27b4fbfc8f28b864997866b20e552aec, type: 3}
@@ -9140,6 +9128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85152c0d0e32b314a923a03402044944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clientGameObject: {fileID: 601054602}
 --- !u!1001 &931754717
 PrefabInstance:
   m_ObjectHideFlags: 0
