@@ -1,7 +1,7 @@
 using UnityEngine;
 using Unity.Networking.Transport;
 
-public class Client : MonoBehaviour {
+public class UDPClient : MonoBehaviour {
 
     public NetworkDriver m_Driver;
     public NetworkConnection m_Connection;
