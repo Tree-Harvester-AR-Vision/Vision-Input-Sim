@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Clients
+namespace Clients
 {
     public interface IWebClient
     {
         void CloseConnection();
-        Task UpdateTrees(List<InputTree> inputTrees, List<InputTree> list, List<InputTree> inputTrees1);
         void Update();
+        Task Send(byte[] sendBytes, int sendBytesLength);
     }
 }

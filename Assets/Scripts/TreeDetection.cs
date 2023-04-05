@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Assets.Scripts.Clients;
+using Clients;
 using UnityEngine;
 using UnityEngine.Serialization;
 
