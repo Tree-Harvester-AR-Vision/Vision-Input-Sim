@@ -1,9 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour {
+    
+    private CharacterController controller;
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
+    private float playerSpeed = 2.0f;
+    private float jumpHeight = 1.0f;
+    private float gravityValue = -9.81f;
+
+    private void Start()
+    {
+        controller = gameObject.AddComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        lookDelta = Vector2.zero;
+    }
+
+    void Update()
+    {
+        groundedPlayer = controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f;
+        }
+
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        controller.Move(move * Time.deltaTime * playerSpeed);
+        transform.Rotate(0, moveDelta.x / rotateDiv, 0);
+        CameraLook();
+
+        if (move != Vector3.zero)
+        {
+            gameObject.transform.forward = move;
+        }
+
+        // Changes the height position of the player..
+        if (Input.GetButtonDown("Jump") && groundedPlayer)
+        {
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
+    }
+    
+    
     Rigidbody rb;
     Vector2 moveDelta;
     Vector2 lookDelta;
@@ -14,21 +57,6 @@ public class PlayerMovement : MonoBehaviour {
     public float rotateDiv;
     public float mouseSens;
     public GameObject playerCam;
-
-    // Start is called before the first frame update
-    void Start() {
-        rb = GetComponent<Rigidbody>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        lookDelta = Vector2.zero;
-    }
-
-    // Update is called once per frame
-    void Update() {
-        rb.velocity = -transform.forward * moveDelta.y * moveSpeed;
-        transform.Rotate(0, moveDelta.x / rotateDiv, 0);
-        CameraLook();
-    }
 
     private void OnMove(InputValue value) {
         moveDelta = value.Get<Vector2>();
