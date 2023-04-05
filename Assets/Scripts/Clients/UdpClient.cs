@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Assets.Scripts.Clients;
 using Newtonsoft.Json;
-using Unity.Networking.Transport;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using System.Net.Sockets;
 using System.Text;
-using static TransportHelper;
 
 namespace Clients
 {

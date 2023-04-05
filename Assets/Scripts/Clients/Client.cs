@@ -61,6 +61,11 @@ namespace Assets.Scripts.Clients
         {
             return client;
         }
+
+        public async Task UpdateTrees(List<InputTree> inputTrees, List<InputTree> list, List<InputTree> inputTrees1)
+        {
+            client.UpdateTrees(inputTrees, list, inputTrees);
+        }
     }
 
     public enum ConnectionType

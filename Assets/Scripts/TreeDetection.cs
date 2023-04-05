@@ -12,35 +12,27 @@ public class TreeDetection : MonoBehaviour
     private static Dictionary<int, InputTree> _treesToRemove;
     private int _it = 0;
 
-    public GameObject clientGameObject;
-    private IWebClient _client;
+    public Client Client;
 
     private void Start()
     {
         trees = new Dictionary<int, InputTree>();
         _previousTrees = new Dictionary<int, List<object>>();
         _treesToRemove = new Dictionary<int, InputTree>();
-
-        if (clientGameObject != null)
-        {
-            _client = clientGameObject.GetComponent<Client>().GetClient();
-        }
-        else
-        {
-            Debug.LogError("Did not find Client-GameObject");
-        }
     }
 
     public async void FixedUpdate()
     {
 
         List<InputTree>[] newData = CreateData();
+        
+            await Client.UpdateTrees(
+                new List<InputTree>(newData[0]),
+                new List<InputTree>(newData[1]),
+                new List<InputTree>(newData[2])
+            );
 
-        await _client.UpdateTrees(
-            new List<InputTree>(newData[0]),
-            new List<InputTree>(newData[1]),
-            new List<InputTree>(newData[2])
-        );
+
     }
 
     private List<InputTree>[] CreateData()
