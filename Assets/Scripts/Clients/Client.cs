@@ -1,71 +1,72 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.Sockets;
+using System.Net.WebSockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+using Clients;
 using UnityEngine;
+using TcpClient = Clients.TcpClient;
+using UdpClient = Clients.UdpClient;
 
-namespace Clients
+namespace Assets.Scripts.Clients
 {
     public class Client : MonoBehaviour
     {
-        
+        private static JsonSerializerSettings settings;
 
-        public string ip = "localhost";
-        public ushort port = 7000;
-        public ConnectionType type;
-        public NullValueHandling nullValueHandling;
-        public Formatting format;
-        
-        private IWebClient _client;
-        private JsonSerializerSettings _settings;
+        public string IP = "localhost";
+        public ushort Port = 7000;
+        public ConnectionType Type;
+        public NullValueHandling NullValueHandling;
+        public Formatting Formatting;
+
+        private IWebClient client;
 
         private void Start()
         {
-            switch (type)
+            settings = new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                Formatting = Formatting
+            };
+
+            switch (Type)
             {
                 case ConnectionType.None:
                     break;
                 case ConnectionType.TCP:
-                    _client = new TcpClient(ip, port);
+                    client = new TcpClient(IP, Port, settings);
                     break;
                 case ConnectionType.UDP:
-                    _client = new UdpClient(ip, port);
+                    client = new UdpClient(IP, Port, settings);
                     break;
             }
-        
-            _settings = new JsonSerializerSettings()
-            {
-                NullValueHandling = nullValueHandling,
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-                Formatting = format
-            };
         }
 
         private void Update()
         {
-            if (_client != null)
-            {
-                _client.Update();
-            }
+            client.Update();
         }
 
         private void OnApplicationQuit()
         {
-            if (_client != null)
+            if (client != null)
             {
-                _client.CloseConnection();
+                client.CloseConnection();
             }
         }
 
         public IWebClient GetClient()
         {
-            return _client;
+            return client;
         }
 
-        public async Task UpdateTrees(
-            List<InputTree> createTrees,
-            List<InputTree> updateTrees,
+        public async Task UpdateTrees(List<InputTree> createTrees, List<InputTree> updateTrees,
             List<InputTree> removeTrees)
         {
             List<InputTree>[] trees = new List<InputTree>[3]
@@ -73,13 +74,12 @@ namespace Clients
                 createTrees, updateTrees, removeTrees
             };
 
-            string jsonString = JsonConvert.SerializeObject(trees, _settings);
+            string jsonString = JsonConvert.SerializeObject(trees, settings);
+            Debug.Log(jsonString);
 
             try
             {
-                Byte[] sendBytes = Encoding.ASCII.GetBytes(jsonString);
-                _client.Send(sendBytes, sendBytes.Length);
-                //SendSequence("List__" + jsonString);
+                await client.Send("List__" + jsonString);
                 Debug.Log("List of trees was sent");
             }
             catch (Exception ex)

@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace Clients
+namespace Assets.Scripts.Clients
 {
     public interface IWebClient
     {
         void CloseConnection();
         void Update();
-        Task Send(byte[] sendBytes, int sendBytesLength);
+        Task Send(string jsonString);
     }
 }

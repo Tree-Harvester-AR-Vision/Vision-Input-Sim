@@ -4,6 +4,7 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Assets.Scripts.Clients;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -15,9 +16,11 @@ namespace Clients
 
         Task _connected;
         bool _specified;
+        private readonly JsonSerializerSettings _settings;
 
-        public TcpClient(string ip, ushort port)
+        public TcpClient(string ip, ushort port, JsonSerializerSettings settings)
         {
+            _settings = settings;
 
             _socket = new ClientWebSocket();
             _specified = false;
@@ -28,14 +31,12 @@ namespace Clients
             if (_connected.IsCompleted && !_specified) {
                 Debug.Log("Connection Complete!");
                 _specified = true;
-                byte[] data = Encoding.ASCII.GetBytes("T");
-                await Send(data, data.Length);
+                await Send("T");
             }
         }
 
-        public async Task Send(byte[] sendBytes, int sendBytesLength)
-        {
-            await _socket.SendAsync(sendBytes, WebSocketMessageType.Text, true, CancellationToken.None);
+        public Task Send(string data) {
+            return _socket.SendAsync(Encoding.UTF8.GetBytes(data), WebSocketMessageType.Text, true, CancellationToken.None);
         }
 
         public void CloseConnection()
