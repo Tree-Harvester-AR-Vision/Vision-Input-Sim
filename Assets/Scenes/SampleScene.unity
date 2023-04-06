@@ -8834,9 +8834,9 @@ GameObject:
   - component: {fileID: 928134144}
   - component: {fileID: 928134143}
   - component: {fileID: 928134145}
-  - component: {fileID: 928134146}
   - component: {fileID: 928134148}
   - component: {fileID: 928134147}
+  - component: {fileID: 928134149}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -8888,6 +8888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c50585667bbf494f921bcecc8d6a7dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 928134149}
   moveSpeed: 5
   rotateDiv: 18
   mouseSens: 0.05
@@ -8935,20 +8936,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Client: {fileID: 601054605}
---- !u!136 &928134146
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928134137}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.50000006
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &928134147
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8974,6 +8961,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1afebda4dab3c428df0196072af951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &928134149
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928134137}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &931754717
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af6d981b-9f28-4676-8687-69277dba9104" name="Changes" comment="Replaced Box with Capsule" />
+    <list default="true" id="af6d981b-9f28-4676-8687-69277dba9104" name="Changes" comment="Removed unused elements">
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +21,7 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Sam/EDA/TreeHarvesterARVision/Vision-Input-Sim/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Sam/EDA/TreeHarvesterARVision/Vision-Input-Sim/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Sam/EDA/TreeHarvesterARVision/Vision-Input-Sim/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Sam/EDA/TreeHarvesterARVision/Vision-Input-Sim/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
@@ -118,7 +122,7 @@
       <workItem from="1680717357197" duration="1911000" />
       <workItem from="1680744726199" duration="7000" />
       <workItem from="1680744785688" duration="2396000" />
-      <workItem from="1680815229302" duration="712000" />
+      <workItem from="1680815229302" duration="1192000" />
     </task>
     <task id="LOCAL-00001" summary="Adding AprilTags">
       <created>1680717482364</created>
@@ -183,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680815949447</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Removed unused elements">
+      <created>1680816196993</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680816196993</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +222,8 @@
     <MESSAGE value="Removed single Tree" />
     <MESSAGE value="Repositioned Cameras" />
     <MESSAGE value="Replaced Box with Capsule" />
-    <option name="LAST_COMMIT_MESSAGE" value="Replaced Box with Capsule" />
+    <MESSAGE value="Removed unused elements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unused elements" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
