@@ -75,12 +75,10 @@ namespace Assets.Scripts.Clients
             };
 
             string jsonString = JsonConvert.SerializeObject(trees, settings);
-            Debug.Log(jsonString);
-
             try
             {
                 await client.Send("List__" + jsonString);
-                Debug.Log("List of trees was sent");
+                Debug.Log($"List of trees was sent {createTrees.Count}, {updateTrees.Count}, {removeTrees.Count})");
             }
             catch (Exception ex)
             {
