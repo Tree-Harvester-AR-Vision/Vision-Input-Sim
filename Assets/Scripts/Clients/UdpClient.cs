@@ -36,6 +36,7 @@ namespace Clients
 
         public Task Send(string jsonString)
         {
+            Debug.Log(jsonString);
             Byte[] sendBytes = Encoding.ASCII.GetBytes(jsonString);
             return _client.SendAsync(sendBytes, sendBytes.Length, _ip, _port);
         }

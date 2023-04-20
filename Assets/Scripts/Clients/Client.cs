@@ -74,15 +74,18 @@ namespace Assets.Scripts.Clients
                 createTrees, updateTrees, removeTrees
             };
 
-            string jsonString = JsonConvert.SerializeObject(trees, settings);
-            try
+            if (createTrees != null && updateTrees != null && removeTrees != null)
             {
-                await client.Send("List__" + jsonString);
-                Debug.Log($"List of trees was sent {createTrees.Count}, {updateTrees.Count}, {removeTrees.Count})");
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError(ex.Message);
+                string jsonString = JsonConvert.SerializeObject(trees, settings);
+                try
+                {
+                    await client.Send(jsonString);
+                    Debug.Log($"List of trees was sent {createTrees.Count}, {updateTrees.Count}, {removeTrees.Count})");
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError(ex.Message);
+                }
             }
         }
     }
