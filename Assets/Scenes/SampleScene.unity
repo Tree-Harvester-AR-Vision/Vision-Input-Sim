@@ -5563,8 +5563,8 @@ MonoBehaviour:
   IP: localhost
   Port: 7000
   Type: 2
-  NullValueHandling: 0
-  Formatting: 1
+  NullValueHandling: 1
+  Formatting: 0
 --- !u!1001 &604821136
 PrefabInstance:
   m_ObjectHideFlags: 0
