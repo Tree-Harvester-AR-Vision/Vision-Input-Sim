@@ -74,7 +74,7 @@ namespace Assets.Scripts.Clients
                 createTrees, updateTrees, removeTrees
             };
 
-            if (createTrees != null && updateTrees != null && removeTrees != null)
+            if ((createTrees != null && updateTrees != null && removeTrees != null) && (createTrees.Count > 0 ||updateTrees.Count > 0 || removeTrees.Count > 0))
             {
                 string jsonString = JsonConvert.SerializeObject(trees, settings);
                 try

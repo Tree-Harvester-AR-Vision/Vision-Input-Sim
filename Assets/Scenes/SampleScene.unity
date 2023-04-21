@@ -5560,7 +5560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c15164a6ec3e2642a371cebe9549517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IP: localhost
+  IP: 127.0.0.1
   Port: 7000
   Type: 2
   NullValueHandling: 1
@@ -5982,8 +5982,8 @@ Transform:
   m_GameObject: {fileID: 619454713}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0, z: 0}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 465129823}
   m_RootOrder: 0
@@ -9112,7 +9112,7 @@ Transform:
   m_GameObject: {fileID: 928134137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 524.5295, y: 32.94, z: 604.6481}
-  m_LocalScale: {x: 3.433, y: 2.1407, z: 4.3322}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 465129823}
