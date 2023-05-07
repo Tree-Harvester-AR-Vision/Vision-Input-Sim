@@ -15,17 +15,14 @@ namespace Clients
     public class UdpClient : IWebClient
     {
         readonly System.Net.Sockets.UdpClient _client;
-        private readonly JsonSerializerSettings _settings;
         private readonly ushort _port;
         private readonly string _ip;
         
 
-        public UdpClient(string ip, ushort port, JsonSerializerSettings settings)
+        public UdpClient(string ip, ushort port)
         {
-            _settings = settings;
             _ip = ip;
             _port = port;
-
             _client = new System.Net.Sockets.UdpClient();
         }
 

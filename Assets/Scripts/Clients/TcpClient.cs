@@ -16,12 +16,9 @@ namespace Clients
 
         Task _connected;
         bool _specified;
-        private readonly JsonSerializerSettings _settings;
 
-        public TcpClient(string ip, ushort port, JsonSerializerSettings settings)
+        public TcpClient(string ip, ushort port)
         {
-            _settings = settings;
-
             _socket = new ClientWebSocket();
             _specified = false;
             _connected = _socket.ConnectAsync(new Uri($"ws://{ip}:{port}"), CancellationToken.None);

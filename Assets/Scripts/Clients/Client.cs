@@ -23,6 +23,7 @@ namespace Assets.Scripts.Clients
         public ConnectionType Type;
         public NullValueHandling NullValueHandling;
         public Formatting Formatting;
+        public bool Simulation;
 
         private IWebClient client;
 
@@ -40,10 +41,10 @@ namespace Assets.Scripts.Clients
                 case ConnectionType.None:
                     break;
                 case ConnectionType.TCP:
-                    client = new TcpClient(IP, Port, settings);
+                    client = new TcpClient(IP, Port);
                     break;
                 case ConnectionType.UDP:
-                    client = new UdpClient(IP, Port, settings);
+                    client = new UdpClient(IP, Port);
                     break;
             }
         }
@@ -77,6 +78,12 @@ namespace Assets.Scripts.Clients
             if ((createTrees != null && updateTrees != null && removeTrees != null) && (createTrees.Count > 0 ||updateTrees.Count > 0 || removeTrees.Count > 0))
             {
                 string jsonString = JsonConvert.SerializeObject(trees, settings);
+                if(Simulation){
+                    jsonString = "1" + jsonString;
+                }
+                else{
+                jsonString += "0" + jsonString;
+                }
                 try
                 {
                     await client.Send(jsonString);

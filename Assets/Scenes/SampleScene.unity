@@ -5565,6 +5565,7 @@ MonoBehaviour:
   Type: 2
   NullValueHandling: 1
   Formatting: 0
+  Simulation: 0
 --- !u!1001 &604821136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9190,7 +9191,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 15.35
+  m_Radius: 45
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &928134148
 MonoBehaviour:
